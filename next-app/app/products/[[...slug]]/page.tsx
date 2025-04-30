@@ -1,13 +1,15 @@
 import React from 'react'
 
 interface Props {
-    params: { slug: string[] };
-    searchParams: { sortOrder: string };
+    params: Promise<{ slug: string[] }>;
+    searchParams: Promise<{ sortOrder: string }>;
 }
 
-const ProductPage = ({ params: { slug }, searchParams: { sortOrder } }: Props) => {
+const ProductPage = async ({ params, searchParams }: Props) => {
+  const { slug } = await params;
+  const { sortOrder } = await searchParams;
   return (
-    <div>ProductPage { slug }</div>
+    <div>ProductPage { slug }{ sortOrder }</div>
   )
 }
 

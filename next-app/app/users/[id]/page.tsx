@@ -1,11 +1,11 @@
 import React from 'react'
-import Link from 'next/link'
 
 interface Props {
-    params: { id: number }
+    params: Promise<{ id: number; }>;
 }
 
-const UserDetailPage = ({ params: { id } }: Props) => {
+const UserDetailPage = async (props: Props) => {
+const { id } = await props.params;
   return (
     <>
         <div>UserDetailPage { id }</div>
